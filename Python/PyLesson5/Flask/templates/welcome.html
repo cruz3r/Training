@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %} 
+{% block content %}
+    <h1>Welcome to my page!</h1>
+    <p>
+        <button>
+            <a href="{{ url_for('card_view', index=0) }}">
+                First Card
+            </a>
+        </button>
+        <button >
+            <a href="{{ url_for('add_card') }}">
+                Add a new card
+            </a>
+        </button>
+    </p>
+    <ul>
+        {% for card in cards %}
+        <li>
+            <a href="{{ url_for('card_view', index=loop.index0) }}">
+                {{ card.question }}
+        </a>
+        </li>
+        {% endfor %}
+    </ul>
+    <p>
+        This is the demo application
+        <em>Flask</em>
+        on <a href="https://google.com">Google it!</a>
+        
+    </p>
+    <p>
+        "This is just a message from Jinja - {{message}} <br>
+        
+    </p>
+    
+{% endblock %}

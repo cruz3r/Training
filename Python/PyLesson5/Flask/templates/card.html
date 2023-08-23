@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}myCards{% endblock %} 
+{% block content %}
+    <h1>Flask Card</h1>
+    Question: {{ card.question }} <br><br>
+    Answer: {{ card.answer }}
+    <p>
+        <button>
+            {% if index < max_index %}
+            <a href="{{ url_for('card_view', index=index + 1) }}">
+                Next Card
+            </a>
+            {% else%}
+            <a href="{{ url_for('card_view', index=0) }}">
+                Start Over
+            </a>
+            {% endif %}
+        </button>
+        <button>
+            <a href="{{ url_for('card_view', index=index - 1) }}">
+                Previous Card
+            </a>
+        </button>
+        <button >
+            <a href="{{ url_for('add_card') }}">
+                Add a new card
+            </a>
+        </button>
+        <button >
+            <a href="{{ url_for('remove_card', index=index) }}">
+                Remove card
+            </a>
+        </button>
+    </p>
+    <p>
+        <button>
+            <a href="{{ url_for('welcome') }}">
+                Home
+            </a>
+        </button>
+    </p>
+
+{% endblock %}

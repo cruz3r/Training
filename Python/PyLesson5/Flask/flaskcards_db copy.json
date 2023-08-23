@@ -1,0 +1,22 @@
+[
+    {
+        "question": "What is the command to create a virtual env?",
+        "answer": "python -m venv Path"
+    },
+    {
+        "question": "What is the purpose of a virtual env?",
+        "answer": "Using virtualenv allows you to avoid installing Python packages globally which could break system tools or other projects."
+    },
+    {
+        "question": "What is PIP?",
+        "answer": "A Python package manager."
+    },
+    {
+        "question": "What is the PIP command to install a Package?",
+        "answer": "python -m pip install PackageName"
+    },
+    {
+        "question": "What is PIP freeze used for?",
+        "answer": "pip freeze > requirements.txt takes the current package list and exports it to a text file. This can be used to import a list of required packages."
+    }
+]

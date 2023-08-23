@@ -1,0 +1,12 @@
+body {
+  font-family: sans-serif;
+  color: black;
+  background-color: rgb(147, 170, 189);
+  margin-left: 20px;
+  font-size: large;
+}
+
+h1 {
+  color: navy;
+  margin-left: 20px;
+}

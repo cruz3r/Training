@@ -1,0 +1,10 @@
+WinRM
+wisvc
+wlidsvc
+wmiApSrv
+WMPNetworkSvc
+WPDBusEnum
+WpnService
+WpnUserService_31d6466
+WSearch
+wuauserv

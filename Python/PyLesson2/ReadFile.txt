@@ -1,0 +1,9 @@
+AJRouter
+ALG
+AppHostSvc
+AppIDSvc
+Appinfo
+AppMgmt
+AppReadiness
+AppVClient
+AppXSvc

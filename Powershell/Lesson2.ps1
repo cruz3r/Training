@@ -1,0 +1,127 @@
+﻿<#
+    Filtering - Each cmdlet has various filtering techniques let's look at AD and WMI These are some unique cases
+    Lists
+    Hashtables
+    CSV Files
+    JSON Files - understand depth
+#>
+
+<# 
+When you need to Filter for some information think about what you are filtering for and where does it make sense to filter it at
+I was asked to find all users in AD that are in this specific Group They don't know the full name of the group just that it's for 
+DCOps - Data Center Operations 
+
+1. How do you search for groups in AD? 
+2. What is the name of the PS Commandlet that you will use?
+3. Can you Filter for the name using a WildCard?
+
+The Filter is looking for a String it will require you to put it in quotes or you can use {} to pass it a Script Block which can be a multiline string 
+
+In AD Commandlets you may see 2 types of filter parameters -filter and -ldapfilter
+LDAP Filters provide backwards compatability and are still used in many applications 
+4. What type of group was it? 
+5. Could you use that in your filter as well?
+
+6 what parameter can you use to get the members 
+
+#>
+
+$query = 'name -like "Data*"'
+get-adgroup -Filter $query | Format-Table
+
+get-adgroup -filter 'name -like "Data*Center*"'
+
+get-adgroup -LDAPFilter '(name=Data*Center*)'
+
+$query = '(name -like "Data*Center*") -and (GroupCategory -eq "Distribution")'
+Get-ADGroup -Filter $query
+
+get-adgroup -filter '(name -like "Data*Center*") -and (GroupCategory -eq "Distribution")'
+
+get-adgroup -LDAPFilter '(&(name=Data*Center*)(GroupCategory=Distribution))'
+# Group Type 8 is a combination of GroupCategory and GroupScope
+get-adgroup -LDAPFilter '(&(name=Data*Center*)(GroupType=8))'
+
+# Last part get the members
+$group = get-adgroup -filter '(name -like "Data*Center*") -and (GroupCategory -eq "Distribution")' -Properties members
+$group
+<# 
+List's
+What is a list?
+How can we use a list?c
+#>
+# Is this a list?
+$testlistA = ('Apples', 'Oranges', 'kiwi', 'milk', 'eggs', 345)
+# How to recall the list
+$testlistA 
+$testlistA[0]
+
+$names = get-content C:\temp\names.txt
+$names
+
+# Here are different ways to create an Array List - Big Difference is that the methods work to add and remove them
+$testlistB = New-Object -TypeName 'System.Collections.ArrayList'
+$testlistC = [System.Collections.ArrayList]::new()
+$testlistC | Get-Member
+[System.Collections.ArrayList]$testlistD = @()
+$testlistD | Get-Member
+# Using this information create an empty list and use Get-Member to explore the Methods
+$testlistB | Get-Member
+$testlistB.Add('rdp-silva')
+$testlistB.Add('rdp-mcruz')
+$testlistB | Get-Member
+$testlistB[0]
+$testlistB[1]
+# Why would I use this rather than a static list?
+
+
+<# 
+Hashtable
+What is a hashtable? 
+- A Key Value Store name value pair 
+When would I use this rather than a list?
+#>
+
+$myhashtable = @{'SQL' = 'DEVSQL' }
+$myhashtable
+$myhashtable.Add('CTX', 'IRV-SQLCPAG-CTX')
+
+$myhashtable['CTX']
+$myhashtable.CTX
+# Will this work?
+$myhashtable[1]
+
+
+$user = get-aduser michael.cruz
+$user
+$user['name']
+$user.Name
+
+<#
+CSV
+How dow store data that has multiple fields in a text file?
+
+#>
+
+Get-Help csv
+# you can run the help on each command to understand what it will need and how to use it. 
+
+$services = get-service -name Spooler, w32time, netlogon
+$services | convertto-csv
+# I converted the $services to a CSV but did not save it to a file.
+$services | convertto-csv -NoTypeInformation | Out-File -filepath C:\temp\services.csv -Force
+(import-csv -Path C:\temp\services.csv | Select-Object name) | Stop-Service -WhatIf
+
+$services | Export-Csv -Path C:\temp\services2.csv
+$a = import-csv -Path C:\temp\services2.csv
+$a
+<#
+    JSON
+    becareful of the Depth
+#>
+
+$b = $services[0] | ConvertTo-Json
+$b
+$services | ConvertTo-Json | Out-File -filepath C:\temp\services.json -Force
+$c = get-content C:\temp\services.json
+$c
