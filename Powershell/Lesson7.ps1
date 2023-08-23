@@ -15,7 +15,7 @@ function Get-MYScheduledTask {
         [parameter(HelpMessage="SchTasks Path",Mandatory=$true)]
         [validateset("Workday Tasks","Inventory")]
         [String]$SchTaskPath,
-        [string]$ComputerName = "irv-ops-tsk01",
+        [string]$ComputerName = "loc-ops-tsk01",
         [switch]$status
         
     )

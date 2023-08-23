@@ -83,7 +83,7 @@ When would I use this rather than a list?
 
 $myhashtable = @{'SQL'='DEVSQL'}
 $myhashtable
-$myhashtable.Add('CTX','IRV-SQLCPAG-CTX')
+$myhashtable.Add('CTX','loc-SQLCPAG-CTX')
 
 $myhashtable['CTX']
 $myhashtable.CTX

@@ -52,7 +52,7 @@ get-help about_cimsession
 
 # Run as account with permissions
 $cred = Get-Credential
-$server = 'irv-bignavi01'
+$server = 'loc-bignavi01'
 
 # New-CimSessionOption allows you to specify any specific options that are needed
 $newCimmSessionOption = New-CimSessionOption -Protocol Dcom

@@ -39,16 +39,16 @@ winrm quickconfig
 $cred = Get-Credential
 
 # Start and end an interactive Session
-Enter-PSSession -ComputerName IRV-BIGNAVI01 -Credential $cred
+Enter-PSSession -ComputerName loc-BIGNAVI01 -Credential $cred
 Exit-PSSession
 # Run a remote command
-Invoke-Command -ComputerName IRV-BIGNAVI01, IRV-BIGNAVI02 -ScriptBlock { get-hotfix } -Credential $cred
+Invoke-Command -ComputerName loc-BIGNAVI01, loc-BIGNAVI02 -ScriptBlock { get-hotfix } -Credential $cred
 # Run a Script
-Invoke-Command -ComputerName IRV-BIGNAVI01, IRV-BIGNAVI02 -FilePath C:\Users\michael.cruz\Documents\Training\powershell-training\Lessons\Lesson6Example.ps1 -Credential $cred
+Invoke-Command -ComputerName loc-BIGNAVI01, loc-BIGNAVI02 -FilePath C:\Users\michael.cruz\Documents\Training\powershell-training\Lessons\Lesson6Example.ps1 -Credential $cred
 
 # Persistent Connections
 Get-PSSession
-$session = New-PSSession -ComputerName irv-ops-tsk01 -Credential $cred
+$session = New-PSSession -ComputerName loc-ops-tsk01 -Credential $cred
 $session
 # Interesting things to note - It is running in it's own Runspace this will take up resources
 Invoke-Command -Session $session { $SchTask = Get-ScheduledTask }

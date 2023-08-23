@@ -2,7 +2,7 @@ Configuration SampleIISUnInstall
 {
     Import-DscResource -ModuleName 'PSDesiredStateConfiguration'
 
-    node ('irv-bignavi01')
+    node ('loc-bignavi01')
     {
         File HelloWorld {
             DestinationPath = "C:\Temp\index.htm"

@@ -111,7 +111,7 @@ Get-DscLocalConfigurationManager
 # Call the Powershell Configuration
 SampleIISInstall
 # Get Windows Feature from remote server 
-Invoke-Command -ComputerName irv-bignavi01 -Credential $cred -ScriptBlock { Get-WindowsFeature web-server }
+Invoke-Command -ComputerName loc-bignavi01 -Credential $cred -ScriptBlock { Get-WindowsFeature web-server }
 # Start the DSCConfiguration
 Start-DscConfiguration -Path .\SampleIISInstall\ -Verbose -Credential $cred
 # Creates the new directory and the Mof file
