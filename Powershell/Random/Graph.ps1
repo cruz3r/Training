@@ -5,7 +5,7 @@
 graph folders {
    node @{shape='folder'}
    node $serversou -NodeScript {$_.DistinguishedName} @{label={$_.name}}
-   edge $serversou -FromScript { ($_.DistinguishedName -split ",",2)[1] -replace ",DC=fairwaymc,DC=com",""} -ToScript {($_.DistinguishedName )}
+   edge $serversou -FromScript { ($_.DistinguishedName -split ",",2)[1] -replace ",DC=domain,DC=com",""} -ToScript {($_.DistinguishedName )}
 } | Export-PSGraph -ShowGraph
 
 # ---------------

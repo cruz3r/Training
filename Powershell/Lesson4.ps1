@@ -49,5 +49,5 @@ $PSEdition
 # dot sourcing
 . c:\temp\test.ps1
 
-# Downloading scripts from unknown sources - Things t o question about downloading scripts
+# Downloading scripts from unknown sources - Things to question about downloading scripts
 Unblock-File

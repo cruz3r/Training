@@ -95,10 +95,10 @@ function Set-myEnvironment {
     
     process {
         $ou = Switch ($environment){
-            Prd {"OU=Prd,OU=Servers,DC=fairwaymc,DC=com"}
-            Dev {"OU=Dev,OU=Servers,DC=fairwaymc,DC=com"}
-            Tst {"OU=Tst,OU=Servers,DC=fairwaymc,DC=com"}
-            Stg {"OU=Stg,OU=Servers,DC=fairwaymc,DC=com"}
+            Prd {"OU=Prd,OU=Servers,DC=domain,DC=com"}
+            Dev {"OU=Dev,OU=Servers,DC=domain,DC=com"}
+            Tst {"OU=Tst,OU=Servers,DC=domain,DC=com"}
+            Stg {"OU=Stg,OU=Servers,DC=domain,DC=com"}
         }
         "$ComputerName should be added to: " + $ou
     }

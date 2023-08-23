@@ -36,7 +36,7 @@ $many.count
 $many
 
 # Switch Examples
-switch -Regex ('my5.sa@fairwaymc.com'){
+switch -Regex ('my5.sa@domain.com'){
     '\w+' {"a word like - " + $Matches.Values}
     '\W+' {"Not a word - " + $Matches.Values}
     '\d' {"a digit - " + $Matches.Values}

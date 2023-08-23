@@ -33,7 +33,7 @@ If ($a -gt $b){
 $giveMeaName = Read-Host "Enter your name"
 switch ($giveMeaName){
     "Michael" {"you Picked a"}
-    "Kazzy" {"you Picked b"}
+    "John" {"you Picked b"}
     "Manuel" {"you Picked c"}
     Default {"No Options"}
 }
@@ -42,9 +42,9 @@ switch ($giveMeaName){
 
 $myList = (
     "michael.cruz",
-    "ed.silva",
-    "kazzy.kazeem",
-    "manuel.gonzalez"
+    "Ed.Silver",
+    "John.Doe",
+    "Bill.Smith"
     )
 
 Foreach ($person in $myList){
