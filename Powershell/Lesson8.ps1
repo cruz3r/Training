@@ -54,7 +54,7 @@ switch -Regex ('my5.sa@domain.com'){
 "There are many reasons to learn regex" -cmatch "^t" # Case Sensitive
 "There are many reasons to learn regex" -split "\s"
 "There are many reasons to learn regex" -csplit "to"
-"There-are@many)reasons#to{learn%regex" -replace "[-@#$%{}<>())]"," "
+"There-are@many)reasons#to{learn%regex" -creplace "[-@#$%{}<>())]"," "
 
 # Numbers validate boolean
 $myRegex = '\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}'
